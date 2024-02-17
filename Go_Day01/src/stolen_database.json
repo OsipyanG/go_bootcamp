@@ -11,7 +11,7 @@
         },
         {
           "ingredient_name": "Strawberries",
-          "ingredient_count": "8"  // ingredient_unit is not even here!
+          "ingredient_count": "8"
         },
         {
           "ingredient_name": "Coffee Beans",

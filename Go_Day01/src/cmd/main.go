@@ -1,22 +1,20 @@
 package main
 
 import (
+	dbreader "db-reader/pkg/db-reader"
 	"fmt"
-	"io/ioutil"
 	"log"
 )
 
 type DBReader interface {
-	Read()
+	Read(filename string) (dbreader.DataBase, error)
 }
 
 func main() {
-
-	content, err := ioutil.ReadFile("words.txt")
-
+	var dbReader DBReader = &dbreader.JsonReader{}
+	db, err := dbReader.Read("../stolen_database.json")
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalln(err.Error())
 	}
-
-	fmt.Println(string(content))
+	fmt.Println(db)
 }
