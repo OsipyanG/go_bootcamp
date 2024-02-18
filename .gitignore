@@ -7,3 +7,5 @@ data-samples
 datasets
 materials
 misc
+.gitignore
+.gitkeep
