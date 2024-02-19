@@ -14,18 +14,21 @@ func (st Statistics) Mean() float64 {
 }
 func (st Statistics) Mode() int {
 	var numberCounter = make(map[int]int, st.numbersLen)
-	maxValue := 0
-	var maxElem = 0
+	maxCount := 0
+	var maxNumber = 0
 	for _, number := range st.numbers {
 		numberCounter[number]++
 	}
-	for key, value := range numberCounter {
-		if value > maxValue {
-			maxValue = value
-			maxElem = key
+	for number, count := range numberCounter {
+		if count > maxCount {
+			maxCount = count
+			maxNumber = number
+		} else if count == maxCount && maxNumber > number {
+			maxCount = count
+			maxNumber = number
 		}
 	}
-	return maxElem
+	return maxNumber
 }
 func (st Statistics) Median() float64 {
 	if st.numbersLen == 0 {
